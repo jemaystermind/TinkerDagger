@@ -1,12 +1,13 @@
 package com.jemaystermind.tinkerdagger.ui;
 
 import android.app.Application;
-import com.jemaystermind.tinkerdagger.data.AppComponent;
-import com.jemaystermind.tinkerdagger.data.AppModule;
-import com.jemaystermind.tinkerdagger.data.DaggerAppComponent;
-import com.jemaystermind.tinkerdagger.data.UserComponent;
-import com.jemaystermind.tinkerdagger.data.UserModule;
+import android.support.annotation.NonNull;
+import com.jemaystermind.tinkerdagger.data.component.AppComponent;
+import com.jemaystermind.tinkerdagger.data.component.DaggerAppComponent;
+import com.jemaystermind.tinkerdagger.data.component.UserComponent;
 import com.jemaystermind.tinkerdagger.data.model.User;
+import com.jemaystermind.tinkerdagger.data.module.AppModule;
+import com.jemaystermind.tinkerdagger.data.module.UserModule;
 import javax.inject.Inject;
 import timber.log.Timber;
 
@@ -28,6 +29,7 @@ public class TinkerDaggerApp extends Application {
     appComponent = DaggerAppComponent.builder() //
         .appModule(new AppModule(this)) //
         .build();
+
     appComponent.inject(this);
   }
 
@@ -36,8 +38,10 @@ public class TinkerDaggerApp extends Application {
   }
 
   // Call this when a user "logs in" to the app
-  UserComponent createUserComponent(User user) {
-    return userComponent = appComponent.plus(new UserModule(user));
+  UserComponent createUserComponent(@NonNull User user) {
+    return userComponent = appComponent.userComponent() //
+        .userModule(new UserModule(user)) //
+        .build();
   }
 
   // Call this when a user "logs out" from the app

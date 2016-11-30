@@ -1,15 +1,19 @@
-package com.jemaystermind.tinkerdagger.data;
+package com.jemaystermind.tinkerdagger.data.module;
 
 import android.app.Application;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.preference.PreferenceManager;
+import com.jemaystermind.tinkerdagger.data.UserToken;
+import com.jemaystermind.tinkerdagger.data.component.MainActivityComponent;
+import com.jemaystermind.tinkerdagger.data.component.UserComponent;
 import com.jemaystermind.tinkerdagger.ui.TinkerDaggerApp;
 import dagger.Module;
 import dagger.Provides;
 import javax.inject.Singleton;
 
-@Module public final class AppModule {
+@Module(subcomponents = { MainActivityComponent.class, UserComponent.class })
+public final class AppModule {
   private TinkerDaggerApp application;
 
   public AppModule(TinkerDaggerApp application) {

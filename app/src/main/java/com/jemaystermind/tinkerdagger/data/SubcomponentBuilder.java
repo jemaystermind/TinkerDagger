@@ -6,14 +6,11 @@
  */
 package com.jemaystermind.tinkerdagger.data;
 
-import dagger.Module;
-
 /**
- * The module that provides network related dependency.
+ * Utility interface when using sub-components builder.
  *
  * @author Jeremy Tecson
  */
-@Module
-public class NetworkModule {
-  // Provides OkHttp
+public interface SubcomponentBuilder<C> extends ComponentBuilder<C> {
+
 }

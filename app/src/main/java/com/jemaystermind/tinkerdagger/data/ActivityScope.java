@@ -6,9 +6,9 @@
  */
 package com.jemaystermind.tinkerdagger.data;
 
-    import java.lang.annotation.Retention;
-    import java.lang.annotation.RetentionPolicy;
-    import javax.inject.Scope;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import javax.inject.Scope;
 
 /**
  * TODO Jemay: What does this class do?

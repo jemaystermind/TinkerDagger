@@ -4,8 +4,11 @@
  * This file is subject to the terms and conditions defined in
  * file 'LICENSE.txt', which is part of this source code package.
  */
-package com.jemaystermind.tinkerdagger.data;
+package com.jemaystermind.tinkerdagger.data.module;
 
+import com.jemaystermind.tinkerdagger.data.UserScope;
+import com.jemaystermind.tinkerdagger.data.component.UserActivityComponent;
+import com.jemaystermind.tinkerdagger.data.component.UserDetailComponent;
 import com.jemaystermind.tinkerdagger.data.model.User;
 import dagger.Module;
 import dagger.Provides;
@@ -15,7 +18,7 @@ import dagger.Provides;
  *
  * @author Jeremy Tecson
  */
-@Module
+@Module(subcomponents = { UserActivityComponent.class, UserDetailComponent.class })
 public class UserModule {
 
   private final User user;

@@ -4,17 +4,16 @@
  * This file is subject to the terms and conditions defined in
  * file 'LICENSE.txt', which is part of this source code package.
  */
-package com.jemaystermind.tinkerdagger.data;
+package com.jemaystermind.tinkerdagger.data.module;
 
-import dagger.Subcomponent;
+import dagger.Module;
 
 /**
  * TODO Jemay: What does this class do?
  *
  * @author Jeremy Tecson
  */
-@UserScope
-@Subcomponent(modules = { UserModule.class })
-public interface UserComponent {
-  UserActivityComponent plus(UserActivityModule module);
+@Module
+public class DatabaseModule {
+  // Provides BriteDatabase?
 }
