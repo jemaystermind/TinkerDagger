@@ -5,6 +5,11 @@ def versionPatch = 0
 // bump for dogfood builds, public betas, etc.
 def versionBuild = 1
 
+tasks.whenTaskAdded { task ->
+  if (task.name.contains("lint")) {
+    task.enabled = false
+  }
+}
 
 apply plugin: 'com.android.application'
 apply plugin: 'me.tatarka.retrolambda'
