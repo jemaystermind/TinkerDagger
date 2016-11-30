@@ -10,52 +10,43 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.widget.TextView;
+import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 import com.jemaystermind.tinkerdagger.R;
-import com.jemaystermind.tinkerdagger.data.component.UserActivityComponent;
+import com.jemaystermind.tinkerdagger.data.component.UserDetailComponent;
 import com.jemaystermind.tinkerdagger.data.model.User;
-import com.jemaystermind.tinkerdagger.data.module.UserActivityModule;
+import com.jemaystermind.tinkerdagger.data.module.UserDetailModule;
 import javax.inject.Inject;
-import timber.log.Timber;
 
 /**
  * TODO Jemay: What does this class do?
  *
  * @author Jeremy Tecson
  */
-public class UserActivity extends BaseActivity {
+public class UserDetailActivity extends BaseActivity {
+
+  @BindView(R.id.user_detail) TextView userDetail;
 
   @Inject User user;
-  @Inject TinkerDaggerApp application;
 
   public static void start(Context context) {
-    Intent starter = new Intent(context, UserActivity.class);
+    Intent starter = new Intent(context, UserDetailActivity.class);
     context.startActivity(starter);
   }
 
   @Override protected void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_user);
+    setContentView(R.layout.activity_user_detail);
     ButterKnife.bind(this);
-    Timber.i("user=%s", user);
+    userDetail.setText(user.toString());
   }
 
   @Override protected void setupActivityComponent() {
-    final UserActivityComponent component =
-        ((TinkerDaggerApp) getApplication()).getUserComponent() //
-            .userActivityComponent() //
-            .userActivityModule(new UserActivityModule(this)) //
+    final UserDetailComponent component =
+        ((TinkerDaggerApp) getApplication()).getUserComponent().userDetailComponent() //
+            .userDetailModule(new UserDetailModule(this)) //
             .build();
     component.inject(this);
-  }
-
-  @OnClick(R.id.logout) void logout() {
-    application.releaseUserComponent();
-    finish();
-  }
-
-  @OnClick(R.id.detail) void startDetail() {
-    UserDetailActivity.start(this);
   }
 }

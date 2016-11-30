@@ -4,9 +4,10 @@
  * This file is subject to the terms and conditions defined in
  * file 'LICENSE.txt', which is part of this source code package.
  */
-package com.jemaystermind.tinkerdagger.data;
+package com.jemaystermind.tinkerdagger.data.module;
 
 import android.app.Activity;
+import com.jemaystermind.tinkerdagger.data.ActivityScope;
 import com.jemaystermind.tinkerdagger.ui.UserActivity;
 import dagger.Module;
 import dagger.Provides;
