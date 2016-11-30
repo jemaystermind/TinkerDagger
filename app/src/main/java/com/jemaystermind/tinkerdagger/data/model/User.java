@@ -1,4 +1,4 @@
-package com.jemaystermind.tinkerdagger;
+package com.jemaystermind.tinkerdagger.data.model;
 
 public class User {
   public final String name;
